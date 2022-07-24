@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DATABASEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ratelist">
+          <Key>
+            <PropertyRef Name="designid" />
+          </Key>
+          <Property Name="design" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="designid" Type="int" Nullable="false" />
+          <Property Name="stiches" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="color" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="rate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="jobrate" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="stchrate" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="bitmap" Type="image" />
+          <Property Name="2mmor35" Type="bit" />
+          <Property Name="item" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="staffmember" Type="nchar" MaxLength="50" />
+          <Property Name="password" Type="nchar" MaxLength="10" />
+          <Property Name="seqlevel" Type="nchar" MaxLength="10" />
+          <Property Name="remark" Type="text" />
+        </EntityType>
+        <EntityContainer Name="DATABASEModelStoreContainer">
+          <EntitySet Name="ratelist" EntityType="Self.ratelist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DATABASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ratelist">
+          <Key>
+            <PropertyRef Name="designid" />
+          </Key>
+          <Property Name="design" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="designid" Type="Int32" Nullable="false" />
+          <Property Name="stiches" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="color" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="rate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="jobrate" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="stchrate" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="bitmap" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="C2mmor35" Type="Boolean" />
+          <Property Name="item" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="staffmember" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="seqlevel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DATABASEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ratelists" EntityType="Self.ratelist" />
+          <EntitySet Name="users" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DATABASEModelStoreContainer" CdmEntityContainer="DATABASEEntities">
+          <EntitySetMapping Name="ratelists">
+            <EntityTypeMapping TypeName="DATABASEModel.ratelist">
+              <MappingFragment StoreEntitySet="ratelist">
+                <ScalarProperty Name="design" ColumnName="design" />
+                <ScalarProperty Name="designid" ColumnName="designid" />
+                <ScalarProperty Name="stiches" ColumnName="stiches" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="jobrate" ColumnName="jobrate" />
+                <ScalarProperty Name="stchrate" ColumnName="stchrate" />
+                <ScalarProperty Name="bitmap" ColumnName="bitmap" />
+                <ScalarProperty Name="C2mmor35" ColumnName="2mmor35" />
+                <ScalarProperty Name="item" ColumnName="item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="DATABASEModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="staffmember" ColumnName="staffmember" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="seqlevel" ColumnName="seqlevel" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
